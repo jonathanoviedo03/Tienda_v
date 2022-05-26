@@ -1,0 +1,53 @@
+body {
+    font-family: Arial;
+    background-color: silver;
+    background-image: url(../img/logo-u.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#estilo1 {
+    color: white;
+    background-color: black;
+    font-family: Arial;
+    text-align: center;
+}
+
+.title {
+    font-family: Arial;
+    color: black;
+}
+
+.footer {
+    color: white;
+    background-color: black;
+    font-family: Arial;
+    text-align: center;
+}
+
+p span {
+    color: red;
+}
+
+.menu-nav {
+    text-align: center;
+}
+
+a {
+    background-color: red;
+    color: white;
+}
+
+a:hover {
+    background-color: black;
+    color: red;
+}
+
+p:nth-child(odd) {
+    background-color: aquamarine;
+}
+
+p:nth-child(even) {
+    background-color: orange;
+}
+
