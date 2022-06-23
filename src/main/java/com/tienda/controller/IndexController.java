@@ -20,13 +20,8 @@ public class IndexController {
     // El GetMapping es para establecer una ruta del sitio web
     @GetMapping("/")
     public String inicio(Model model) {
-
-        log.info("Estamos del lado de programacion");
-
         var clientes = clienteService.getClientes();
-
         model.addAttribute("clientes", clientes);
-
         return "index";
     }
 

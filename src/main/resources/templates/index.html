@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
@@ -21,8 +22,8 @@
                         <th>Apellidos</th>
                         <th>Correo</th>
                         <th>Telefono</th>
-                        <th>Eliminar</th>
                         <th>Modificar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,15 +32,16 @@
                         <td th:text="${cliente.apellidos}"></td>
                         <td th:text="${cliente.correo}"></td>
                         <td th:text="${cliente.telefono}"></td>
-                        <td><a th:href="@{/eliminarCliente/} + ${cliente.idCliente}">Eliminar</a></td>
                         <td><a th:href="@{/modificarCliente/} + ${cliente.idCliente}">Modificar</a></td>
+                        <td><a th:href="@{/eliminarCliente/} + ${cliente.idCliente}">Eliminar</a></td>
                     </tr>
                 </tbody>
             </table>
 
         </div>
+
         <div th:if="${clientes == null or clientes.empty}">
-            No exite una lista de clientes que mostrar...
+            <h3>No exite una lista de clientes que mostrar...</h3>
         </div>
 
         <footer th:replace="layout/plantilla :: footer"></footer>
