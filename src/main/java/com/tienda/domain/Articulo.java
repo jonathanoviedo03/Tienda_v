@@ -32,7 +32,5 @@ public class Articulo implements Serializable {
         this.precio = precio;
         this.existencias = existencias;
         this.activo = activo;
-    }
-    
-    
+    }   
 }

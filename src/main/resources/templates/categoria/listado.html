@@ -3,45 +3,44 @@
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>TechShop</title>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
         <header th:replace="layout/plantilla :: header"></header>
 
-        <h2>Listado de Clientes</h2>
+        <div class="contenido">
 
-        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
+            <h2>Categorias</h2>
 
-        <div th:if="${clientes != null and !clientes.empty}">
+            <div th:if="${categorias != null and !categorias.empty}">
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="cliente : ${clientes}">
-                        <td th:text="${cliente.nombre}"></td>
-                        <td th:text="${cliente.apellidos}"></td>
-                        <td th:text="${cliente.correo}"></td>
-                        <td th:text="${cliente.telefono}"></td>
-                        <td><a th:href="@{/modificarCliente/} + ${cliente.idCliente}">Modificar</a></td>
-                        <td><a th:href="@{/eliminarCliente/} + ${cliente.idCliente}">Eliminar</a></td>
-                    </tr>
-                </tbody>
-            </table>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Activo</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="categoria : ${categorias}">
+                            <td th:text="${categoria.descripcion}"></td>
+                            <td th:text="${categoria.activo}"></td>
+                            <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}">Modificar</a></td>
+                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}">Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        </div>
+            </div>
 
-        <div th:if="${clientes == null or clientes.empty}">
-            <h3>No exite una lista de clientes que mostrar...</h3>
+            <div th:if="${categorias == null or categorias.empty}">
+                <h3>No exite una lista de categorias que mostrar...</h3>
+            </div> 
+
         </div>
 
         <footer th:replace="layout/plantilla :: footer"></footer>

@@ -4,31 +4,26 @@
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
         <header th:replace="layout/plantilla :: header"></header>
 
-        <h2>Datos de Cliente</h2>
+        <h2>Datos de la Categoria</h2>
 
         <a th:href="@{/}">Regresar</a>
 
-        <form th:action="@{/guardarCliente}"
+        <form th:action="@{/guardarCategoria}"
               method="post"
-              th:object="${cliente}">
-            <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+              th:object="${categoria}">
+            <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
 
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" name="descripcion" th:field="*{descripcion}"/>
             <br/>
-            <label for="apellidos">Apellidos:</label>
-            <input type="text" name="apellidos" th:field="*{apellidos}"/>
-            <br/>
-            <label for="correo">Correo:</label>
-            <input type="email" name="correo" th:field="*{correo}"/>
-            <br/>
-            <label for="telefono">Telefono:</label>
-            <input type="tel" name="telefono" th:field="*{telefono}"/>
+            <label for="activo">Activo:</label>
+            <input type="text" name="activo" th:field="*{activo}"/>
             <br/>
             <input type="submit" name="guardar" value="Guardar"/> 
         </form>
