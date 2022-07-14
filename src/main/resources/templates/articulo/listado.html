@@ -12,30 +12,37 @@
 
         <div class="contenido">
 
-            <h2>Nuestros artículos</h2>
+            <h2 th:text="#{articulo.titulo}">Nuestros artículos</h2>
+            
+            <a th:href="@{/articulo/nuevo}" th:text="#{articulo.nuevo}">Nuevo articulo</a>
 
             <div th:if="${articulos != null and !articulos.empty}">
 
                 <table border="1">
                     <thead>
                         <tr>
-                            <th>Descripción</th>
-                            <th>Detalle</th>
-                            <th>Precio</th>
-                            <th>Existencias</th>
-                            <th>Modificar</th>
-                            <th>Eliminar</th>
+                            <th th:text="#{articulo.categoria}">Categoria</th>
+                            <th th:text="#{articulo.descripcion}">Descripción</th>
+                            <th th:text="#{articulo.detalle}">Detalle</th>
+                            <th th:text="#{articulo.precio}">Precio</th>
+                            <th th:text="#{articulo.existencias}">Existencias</th>
+                            <th th:text="#{articulo.activo}">Activo</th>
+                            <th th:text="#{accion.actualizar}">Modificar</th>
+                            <th th:text="#{accion.eliminar}">Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="articulo : ${articulos}">
+                            <td th:text="${articulo.idCategoria}"></td>
                             <td th:text="${articulo.descripcion}"></td>
                             <td th:text="${articulo.detalle}"></td>
                             <td th:text="${#numbers.formatDecimal(articulo.precio,3,2)}"></td>
                             <td th:text="${articulo.existencias}"></td>
-                            <td th:text="${articulo.activo}"></td>
-                            <td><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">Modificar</a></td>
-                            <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">Eliminar</a></td>
+                            <td>
+                                <input type="checkbox" name="activo" th:checked="${articulo.activo}" disabled="true">
+                            </td>
+                            <td><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}" th:text="#{accion.actualizar}">Modificar</a></td>
+                            <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}" th:text="#{accion.eliminar}">Eliminar</a></td>
                         </tr>
                         </tr>
                     </tbody>
@@ -43,7 +50,7 @@
 
             </div>
 
-            <div th:if="${articulos == null or articulos.empty}">
+            <div th:if="${articulos == null or articulos.empty}" th:text="#{articulo.no_mostrar}">
                 <h3>No exite una lista de articulos que mostrar...</h3>
             </div>
 

@@ -13,4 +13,8 @@ public interface ClienteService {
     
     public Cliente getCliente(Cliente cliente);
     
+    
+    
+    
+    public List<Cliente> buscar(Cliente cliente);
 }
