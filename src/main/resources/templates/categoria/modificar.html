@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
@@ -11,19 +11,19 @@
         <header th:replace="layout/plantilla :: header"></header>
 
         <div class="contenido">
-            <h2 th:text="#{categoria.titulo}">Datos de la Categoria</h2>
+            <h2 th:text="#{categoria.titulo}"></h2>
 
-            <a th:href="@{/categoria/listado}" th:text="#{accion.regresar}">Regresar</a>
+            <a th:href="@{/categoria/listado}" th:text="#{accion.regresar}"></a>
 
             <form th:action="@{/categoria/guardar}"
                   method="post"
                   th:object="${categoria}">
                 <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
 
-                <label for="descripcion" th:text="#{categoria.descripcion}">Descripcion:</label>
+                <label for="descripcion" th:text="#{categoria.descripcion}"></label>
                 <input type="text" name="descripcion" th:field="*{descripcion}"/>
                 <br/>
-                <label for="activo" th:text="#{categoria.activo}">Activo:</label>
+                <label for="activo" th:text="#{categoria.activo}"></label>
                 <input type="checkbox" name="activo" th:field="*{activo}"/>
                 <br/>
                 <button type="submit" name="guardar" th:text="#{accion.guardar}"/> 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
@@ -12,27 +12,27 @@
 
         <div class="contenido">
 
-            <h2 th:text="#{categoria.titulo}">Categorias</h2>
+            <h2 th:text="#{categoria.titulo}"></h2>
             
-            <a th:href="@{/categoria/nuevo}" th:text="#{categoria.nuevo}">Nueva Categoria</a>
+            <a th:href="@{/categoria/nuevo}" th:text="#{categoria.nuevo}"></a>
 
             <div th:if="${categorias != null and !categorias.empty}">
 
                 <table border="1">
                     <thead>
                         <tr>
-                            <th th:text="#{categoria.descripcion}">Descripcion</th>
-                            <th th:text="#{categoria.activo}">Activo</th>
-                            <th th:text="#{accion.actualizar}">Modificar</th>
-                            <th th:text="#{accion.eliminar}">Eliminar</th>
+                            <th th:text="#{categoria.descripcion}"></th>
+                            <th th:text="#{categoria.activo}"></th>
+                            <th th:text="#{accion.actualizar}"></th>
+                            <th th:text="#{accion.eliminar}"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="categoria : ${categorias}">
                             <td th:text="${categoria.descripcion}"></td>
                             <td><input type="checkbox" name="activo" th:checked="${categoria.activo}" disabled="true"></td>
-                            <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}" th:text="#{accion.actualizar}">Modificar</a></td>
-                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}" th:text="#{accion.eliminar}">Eliminar</a></td>
+                            <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}" th:text="#{accion.actualizar}"></a></td>
+                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}" th:text="#{accion.eliminar}"></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -40,7 +40,7 @@
             </div>
 
             <div th:if="${categorias == null or categorias.empty}" th:text="#{categoria.no_mostrar}">
-                <h3>No exite una lista de categorias que mostrar...</h3>
+                <h3></h3>
             </div> 
 
         </div>

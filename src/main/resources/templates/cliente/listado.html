@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
@@ -12,24 +12,24 @@
 
         <div class="contenido">
 
-            <h2 th:text="#{cliente.titulo}">Listado de Clientes</h2>
+            <h2 th:text="#{cliente.titulo}"></h2>
 
-            <a th:href="@{/cliente/nuevo}" th:text="#{cliente.nuevo}">Nuevo Cliente</a>
+            <a th:href="@{/cliente/nuevo}" th:text="#{cliente.nuevo}"></a>
             <br/>
-            <a th:href="@{/cliente/busqueda}">Buscar Cliente</a>
+            <a th:href="@{/cliente/busqueda}"></a>
 
             <div th:if="${clientes != null and !clientes.empty}">
 
                 <table border="1">
                     <thead>
                         <tr>
-                            <th th:text="#{cliente.nombre}">Nombre</th>
-                            <th th:text="#{cliente.apellidos}">Apellidos</th>
-                            <th th:text="#{cliente.correo}">Correo</th>
-                            <th th:text="#{cliente.telefono}">Telefono</th>
-                            <th th:text="#{cliente.limite}">Límite</th>
-                            <th th:text="#{accion.actualizar}">Modificar</th>
-                            <th th:text="#{accion.eliminar}">Eliminar</th>
+                            <th th:text="#{cliente.nombre}"></th>
+                            <th th:text="#{cliente.apellidos}"></th>
+                            <th th:text="#{cliente.correo}"></th>
+                            <th th:text="#{cliente.telefono}"></th>
+                            <th th:text="#{cliente.limite}"></th>
+                            <th th:text="#{accion.actualizar}"></th>
+                            <th th:text="#{accion.eliminar}"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,8 +39,8 @@
                             <td th:text="${cliente.correo}"></td>
                             <td th:text="${cliente.telefono}"></td>
                             <td th:text="${#numbers.formatDecimal(cliente.credito.limite,3,2)}" style="text-align: right"></td>
-                            <td><a th:href="@{/cliente/modificar/} + ${cliente.idCliente}" th:text="#{accion.actualizar}">Modificar</a></td>
-                            <td><a th:href="@{/cliente/eliminar/} + ${cliente.idCliente}" th:text="#{accion.eliminar}">Eliminar</a></td>
+                            <td><a th:href="@{/cliente/modificar/} + ${cliente.idCliente}" th:text="#{accion.actualizar}"></a></td>
+                            <td><a th:href="@{/cliente/eliminar/} + ${cliente.idCliente}" th:text="#{accion.eliminar}"></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,7 +48,7 @@
             </div>
 
             <div th:if="${clientes == null or clientes.empty}" th:text="#{cliente.no_mostrar}">
-                <h3>No exite una lista de clientes que mostrar...</h3>
+                <h3></h3>
             </div>
 
         </div>

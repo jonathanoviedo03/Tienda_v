@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
@@ -12,17 +12,17 @@
 
         <div class="contenido">
             
-            <h2 th:text="#{cliente.datos}">Datos de Cliente</h2>
+            <h2 th:text="#{cliente.datos}"></h2>
 
-            <a th:href="@{/cliente/listado}" th:text="#{accion.regresar}">Regresar</a>
+            <a th:href="@{/cliente/listado}" th:text="#{accion.regresar}"></a>
 
             <form th:action="@{/cliente/buscar}"
                   method="post"
                   th:object="${cliente}">
-                <label for="apellidos" th:text="#{cliente.apellidos}">Apellidos:</label>
+                <label for="apellidos" th:text="#{cliente.apellidos}"></label>
                 <input type="text" name="apellidos" th:field="*{apellidos}"/>
                 <br/>
-                <button type="submit" name="guardar" th:text="#{accion.guardar}"/> 
+                <button type="submit" name="Buscar" value="Buscar" th:text="Buscar"/> 
             </form>
         </div>
 
