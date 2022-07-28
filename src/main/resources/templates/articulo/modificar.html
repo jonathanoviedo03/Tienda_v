@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
@@ -21,7 +22,7 @@
                 <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
 
                 <label for="categoria" th:text="#{articulo.categoria}"></label>
-                
+
                 <select th:field="*{idCategoria}">
                     <option th:each="categoria : ${categorias}"
                             th:text="${categoria.descripcion}"

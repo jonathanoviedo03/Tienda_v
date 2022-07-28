@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+
+        <section id="acctions" class="py-4 bg-light">
+            <div class="container">
+                <div class="row"></div>
+            </div>
+        </section>
+
+        <section id="login">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 m-auto">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 th:text="#{login.login}"></h2> 
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" th:action="@{/login}">
+                                    <div class="row py-1 mb-2 bg-light">
+                                        <label for="username" th:text="#{login.username}"></label><br/>
+                                        <input type="text" name="username" id="username"/>
+                                    </div>
+                                    <div class="row py-1 mb-2 bg-light">
+                                        <label for="password" th:text="#{login.password}"></label><br/>
+                                        <input type="password" name="password" id="password"/>
+                                    </div>
+                                    <div class="row py-1 mb-2 bg-light">
+                                        <button type="submit" value="Login" th:text="#{login.login}" class="btn btn-success"></button>
+                                    </div>
+                                </form>
+                            </div>         
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+        </section>
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+    </body>
+</html>

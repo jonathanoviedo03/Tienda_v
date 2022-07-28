@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
@@ -13,8 +14,8 @@
         <div class="contenido">
 
             <h2 th:text="#{articulo.titulo}"></h2>
-            
-            <a th:href="@{/articulo/nuevo}" th:text="#{articulo.nuevo}"></a>
+
+            <a th:href="@{/articulo/nuevo}" th:text="#{articulo.nuevo}" sec:authorize="hasRole('ADMIN')"></a>
 
             <div th:if="${articulos != null and !articulos.empty}">
 
@@ -26,8 +27,8 @@
                             <th th:text="#{articulo.precio}"></th>
                             <th th:text="#{articulo.existencias}"></th>
                             <th th:text="#{articulo.activo}"></th>
-                            <th th:text="#{accion.actualizar}"></th>
-                            <th th:text="#{accion.eliminar}"></th>
+                            <th th:text="#{accion.actualizar}" sec:authorize="hasRole('ADMIN')"></th>
+                            <th th:text="#{accion.eliminar}" sec:authorize="hasRole('ADMIN')"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,8 +40,8 @@
                             <td>
                                 <input type="checkbox" name="activo" th:checked="${articulo.activo}" disabled="true">
                             </td>
-                            <td><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}" th:text="#{accion.actualizar}"></a></td>
-                            <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}" th:text="#{accion.eliminar}"></a></td>
+                            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}" th:text="#{accion.actualizar}"></a></td>
+                            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}" th:text="#{accion.eliminar}"></a></td>
                         </tr>
                         </tr>
                     </tbody>

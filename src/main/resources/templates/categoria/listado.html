@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
@@ -13,8 +14,8 @@
         <div class="contenido">
 
             <h2 th:text="#{categoria.titulo}"></h2>
-            
-            <a th:href="@{/categoria/nuevo}" th:text="#{categoria.nuevo}"></a>
+
+            <a th:href="@{/categoria/nuevo}" th:text="#{categoria.nuevo}" sec:authorize="hasRole('ADMIN')"></a>
 
             <div th:if="${categorias != null and !categorias.empty}">
 
@@ -23,16 +24,16 @@
                         <tr>
                             <th th:text="#{categoria.descripcion}"></th>
                             <th th:text="#{categoria.activo}"></th>
-                            <th th:text="#{accion.actualizar}"></th>
-                            <th th:text="#{accion.eliminar}"></th>
+                            <th th:text="#{accion.actualizar}" sec:authorize="hasRole('ADMIN')"></th>
+                            <th th:text="#{accion.eliminar}" sec:authorize="hasRole('ADMIN')"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="categoria : ${categorias}">
                             <td th:text="${categoria.descripcion}"></td>
                             <td><input type="checkbox" name="activo" th:checked="${categoria.activo}" disabled="true"></td>
-                            <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}" th:text="#{accion.actualizar}"></a></td>
-                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}" th:text="#{accion.eliminar}"></a></td>
+                            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}" th:text="#{accion.actualizar}"></a></td>
+                            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}" th:text="#{accion.eliminar}"></a></td>
                         </tr>
                     </tbody>
                 </table>
